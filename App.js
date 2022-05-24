@@ -19,8 +19,11 @@ export default function App() {
   };
   const addGoalHandler = () => {
     if (enteredGoalText !== "") {
-      setCourseGoals([...courseGoals, enteredGoalText]);
-      setEnteredGoalText("");
+      setCourseGoals([
+        ...courseGoals,
+        { id: Math.random().toString(), text: enteredGoalText },
+      ]);
+      // setEnteredGoalText("");
     } else if (enteredGoalText === "") {
       alert("Please enter your goals...");
     }
@@ -44,10 +47,11 @@ export default function App() {
             renderItem={(itemData) => {
               return (
                 <View style={styles.goalItem}>
-                  <Text style={styles.goalItemText}>{itemData.item}</Text>
+                  <Text style={styles.goalItemText}>{itemData.item.text}</Text>
                 </View>
               );
             }}
+            keyExtractor={(item, index) => item.id}
             alwaysBounceVertical={false}
           />
         )}
