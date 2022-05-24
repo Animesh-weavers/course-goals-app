@@ -21,6 +21,8 @@ export default function App() {
     if (enteredGoalText !== "") {
       setCourseGoals([...courseGoals, enteredGoalText]);
       setEnteredGoalText("");
+    } else if (enteredGoalText === "") {
+      alert("Please enter your goals...");
     }
   };
 
